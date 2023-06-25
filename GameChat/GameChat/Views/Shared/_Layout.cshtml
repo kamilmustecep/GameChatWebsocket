@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Valorant maç, oyuncu ve takım arama platformu!</title>
+    <meta charset="utf-8" />
+    <meta name="description"
+          content="Valorant maç, oyuncu ve takım arayan oyuncuları birbirine bağlayan platformdur!">
+    <meta name="keywords"
+          content="Valorant Maç ara, quakeNet web irc, valorant 5e5 maç, valorant pre ara, valorant maç bul, valorant irc quakenet">
+    <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/popup.css" />
+</head>
+
+<body>
+
+    <div id="background"></div>
+
+
+    @RenderBody()
+
+
+   
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
+   @* @await RenderSectionAsync("Scripts", required: false)*@
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/popup.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/ion.sound.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="~/js/jquery.ticker.js"></script>
+
+    <script>
+        var Socket;
+        var Server = "ws://138.201.155.42:15351";
+        var Steam = "";
+        var Baslik = "2c2566f5449bd27ef74b536ed7dfbcc1bb3fb7c6";
+        var KanalID = "CS16";
+        var AliciID = "CS16";
+
+        /*PopupGoster('#eac_div');*/
+        var tT = setTimeout(function () {
+            PopupGoster('#turnuva_div')
+        }, 30000);
+    </script>
+
+
+    <script>
+
+        //----------------------------------------------------
+        if (window != top) {
+            top.location.href = location.href
+        }
+
+        //----------------------------------------------------
+        function KanalGoster(id) {
+
+            Socket.send(JSON.stringify({
+                "Baslik": Baslik,
+                "Event": "KanalKayit",
+                "Veri": { "Steam": Steam, "KanalID": id }
+            }));
+
+            TabGoster(id);
+
+        }
+
+        //----------------------------------------------------
+        function TabGoster(id) {
+            AliciID = id;
+
+            $('.tab-icerik').hide();
+            $('#tab-kutusu div').removeClass('mavi');
+            $('#tab-icerik-' + AliciID).fadeIn();
+            $('#tab-' + AliciID).removeClass('kirmizi').addClass('mavi');
+
+            $log = $("#tab-icerik-scroll");
+            $log.slimScroll({ scrollTo: $log[0].scrollHeight });
+
+            $('#chat-input').focus();
+        }
+
+        //----------------------------------------------------
+        function TabKapat(AliciID) {
+
+            activeSpecialChatRoom="general";
+
+            $('#tab-' + AliciID).remove();
+            $('#tab-icerik-' + AliciID).remove();
+
+            if ($('#tab-kutusu .tab').last().hasClass("kanal")) {
+                TabGoster(KanalID);
+
+            } else {
+                $('#tab-kutusu .tab a').last().click();
+            }
+
+        }
+
+        ////----------------------------------------------------
+        //function TabYeni(el, id) {
+
+        //    alert(el.innerText);
+
+        //    AliciID = id;
+
+        //    if ($('#tab-icerik-' + id).length) {
+        //        TabGoster(id);
+        //        return;
+        //    }
+
+        //    $('#tab-kutusu div').removeClass('mavi');
+        //    $('#tab-kutusu').append('<div class="tab mavi" id="tab-' + id + '"><a href="javascript:TabGoster(\'' + id + '\')">' + $(el).html() + '</a><span class="x glyphicon glyphicon-remove" onclick="TabKapat(\'' + id + '\');"></span></div>');
+        //    $('.tab-icerik').hide();
+        //    $('#tab-icerik-kutusu').append('<div class="tab-icerik" id="tab-icerik-' + id + '"></div>');
+        //    $('#chat-input').focus();
+        //}
+
+        ////----------------------------------------------------
+        function MesajGonder(Mesaj) {
+            Socket.send(JSON.stringify({
+                "Baslik": Baslik,
+                "Event": "Mesaj",
+                "Veri": { "AliciID": AliciID, "Mesaj": Mesaj, "Steam": Steam }
+            }));
+        }
+
+        //----------------------------------------------------
+        function SocketAc() {
+
+            Socket = (typeof (MozWebSocket) == 'function') ? new MozWebSocket(server) : new WebSocket(Server);
+
+            // bağlantı sağlandığında
+            Socket.onopen = function (e) {
+                Socket.send(JSON.stringify({
+                    "Baslik": Baslik,
+                    "Event": "KanalGuncelle",
+                    "Veri": { "Steam": Steam, "KanalID": KanalID }
+                }));
+            };
+
+            // bağlantı sonlandırıldığında
+            Socket.onclose = function (e) {
+                //setTimeout(function(){SocketAc()}, 1000);
+            };
+
+            // Mesaj geldiğinde
+            Socket.onmessage = function (e) {
+
+                // console.log(e.data);
+
+                var data = JSON.parse(e.data);
+
+                if (data.Event == "Bilgi") {
+
+                    $("#BilgiOnlineSayisi").text(data.OnlineSayisi);
+                    $("#BilgimesajSayisi").text(data.MesajSayisi);
+                    $("#BilgiNick").text(data.Nick);
+
+                    $("#tab-CS16").find(".online").text("(" + data.CS16 + ")");
+                    $("#tab-CSGO").find(".online").text("(" + data.CSGO + ")");
+                    $("#tab-TS3").find(".online").text("(" + data.TS3 + ")");
+                    $("#tab-EAC").find(".online").text("(" + data.EAC + ")");
+
+                    return;
+
+                } else if (data.Event == "Yenile") {
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    }, 5000);
+                    return;
+
+                } else if (data.Event == "Uyari") {
+                    alert(data.Mesaj);
+                    return;
+
+                } else if (data.Event == "PM") {
+
+                    if (!$('#tab-icerik-' + data.GonderenID).length) {
+                        $('#tab-kutusu').append('<div class="tab kirmizi" id="tab-' + data.GonderenID + '"><a href="javascript:TabGoster(\'' + data.GonderenID + '\')">' + data.GonderenNick + '</a><span class="x glyphicon glyphicon-remove" onclick="TabKapat(\'' + data.GonderenID + '\');"></span></div>');
+                        $('#tab-icerik-kutusu').append('<div style="display:none" class="tab-icerik" id="tab-icerik-' + data.GonderenID + '"> </div>');
+                        $.ionSound.play("Mesaj");
+                    }
+
+                    if ($('#tab-icerik-' + data.GonderenID).css('display') != 'block') {
+                        $('#tab-' + data.GonderenID).addClass('kirmizi');
+                        $.ionSound.play("mesaj");
+                    }
+
+                    $('#tab-icerik-' + data.GonderenID).append('<div class="line"><div class="mesaj"><img class="img-circle avatar" src="' + data.GonderenAvatar + '"/> <span onclick="TabYeni(this, \'' + data.GonderenID + '\');" class="nick">' + data.GonderenNick + '</span> ' + data.Mesaj + data.GonderenProfil + '</div> <div class="saat small">' + data.Saat + '</div></div>');
+
+                } else {
+                    $('#tab-icerik-' + data.AliciID).append('<div class="line"><div class="mesaj"><img class="img-circle avatar" src="' + data.GonderenAvatar + '"/> <span onclick="TabYeni(this, \'' + data.GonderenID + '\');" class="nick">' + data.GonderenNick + '</span> ' + data.Mesaj + data.GonderenProfil + '</div><div class="saat small">' + data.Saat + '</div></div>');
+                }
+
+                $log = $("#tab-icerik-scroll");
+                $log.slimScroll({ scrollTo: $log[0].scrollHeight });
+
+                return;
+            };
+        }
+
+        //----------------------------------------------------
+        function SocketKapat() {
+            Socket.close();
+        }
+
+        //----------------------------------------------------
+        // Ready?
+        $(document).ready(function () {
+
+            //SocketAc();
+
+            $("#tab-" + KanalID).addClass("mavi");
+            $("#tab-icerik-" + KanalID).fadeIn("slow");
+
+            $('#chat-input').keypress(function (e) {
+                if (e.keyCode == 13 && this.value) {
+                    MesajGonder($(this).val());
+                    $(this).val('');
+                }
+            });
+
+            $(".kanal").on("click", "a", function (event) {
+                event.preventDefault();
+            });
+
+            $(window).on("beforeunload", function () {
+                Socket.onclose = function (e) {
+                }
+            });
+
+            $(document).keydown(function (e) {
+
+                if (e.keyCode == '27') {
+                    TabGoster(KanalID);
+
+                } else if (e.ctrlKey == true && (e.which == '118' || e.which == '86')) {
+                    e.prEventDefault();
+                }
+            });
+
+            $('#ticker-haber').newsTicker({
+                duration: 5000,
+                row_height: 27,
+                max_rows: 1
+            });
+
+        });
+    </script>
+
+</body>
+</html>

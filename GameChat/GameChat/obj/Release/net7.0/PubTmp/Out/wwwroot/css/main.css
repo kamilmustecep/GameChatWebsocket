@@ -1,0 +1,377 @@
+body{
+    color: #fff;
+    font: normal 14px 'Play';
+    background: #000 url('../images/back2.jpg') center top no-repeat;
+}
+
+::-webkit-input-placeholder{
+    opacity: 0.2;
+}
+
+::-moz-placeholder{
+    opacity: 0.6;
+}
+
+::-moz-selection {
+	background: #000;
+	color: #fff;
+}
+
+::selection {
+	background: #000;
+	color: #fff;
+}
+
+.container{
+	margin:50px auto;
+	padding-top:50px;
+	background: url('../images/logo-4.png') no-repeat top center;
+    background-size:10% 10%;
+}
+
+.container .reklam{
+	margin-top: 100px; 
+	width:728px;
+}
+
+.menu{
+    color: #ccc;
+    line-height: 32px;
+}
+
+.menu ul li{
+    margin-right: 20px;
+}
+
+
+.menu ul li:hover{
+    color: #aaa;
+    cursor: pointer;
+}
+
+.menu ul li:last-child{
+    margin-right: 0;
+}
+
+.menu ul li.turnuva{
+    padding-left: 30px;
+    background: url('../images/turnuva.png') no-repeat left center;
+}
+
+.menu ul li.sss{
+    padding-left: 30px;
+    background: url('../images/sss.png') no-repeat left center;
+}
+
+.menu ul li.login .bilgi a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu ul li.login a.logout{
+    margin-left: 20px;
+    color: #999;
+    transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -webkit-transition: all 0.6s ease 0s;
+}
+
+.menu ul li.login a.logout:hover{
+    color: #fe4848;
+    transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -webkit-transition: all 0.6s ease 0s;
+}
+
+.list{
+	float:left;
+	color: #ccc;
+	padding: 5px 15px 5px 30px;
+}
+
+.list:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.popup{
+	color: #ddd;
+	position: relative;
+	padding: 20px 20px 10px 20px;
+	width: 540px;
+	margin: 0 auto;
+	line-height: 24px;
+    box-shadow: 0 0 30px 3px rgba(1, 57, 82, 1);
+	background: #000;
+	border-radius: 2px;
+}
+
+.popup .mfp-close{
+	color: #64b4f2 !important;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.popup a{
+	color: #fff;
+}
+
+.ul{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+
+.ul li{
+	margin-top:5px;
+	line-height: 24px;
+}
+
+.ul .ul_baslik{
+	margin-top:20px;
+}
+
+.ul .li_90{
+	padding-left: 20px;
+	background: url('../images/90.png') no-repeat center left;
+}
+.ul .li_740{
+	padding-left: 20px;
+	background: url('../images/740.png.gif') no-repeat center left;
+}
+
+#sss_div h3, #turnuva_div h3{
+	color: #fff;
+	padding: 10px 0 0 40px;
+}
+
+#turnuva_div h3{
+	background: url('../images/turnuva_32.png') no-repeat center left;
+}
+
+#sss_div h3{
+	background: url('../images/sss_32.png') no-repeat center left;
+}
+
+#online{
+    color: #ccc;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+#online span{
+    color: #fe4848;
+	padding-right: 15px;
+}
+
+#online span:last-child{
+    padding-right: 0;
+}
+
+#main{
+    margin-top: 20px;
+    padding: 10px 10px 10px 10px;
+    background: #121212;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+}
+
+#ticker{
+    color: #ccc;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#ticker #ticker-haber{
+	cursor:pointer;
+	margin:0;
+	padding:0;
+	line-height:28px;
+	list-style: none;
+}
+
+#ticker #ticker-haber a, #ticker-haber a:visited, #ticker #ticker-haber a:hover{
+	padding: 5px;
+	color: #aaa;
+	text-decoration: none;
+}
+
+#tab-kutusu{
+	color: #6f6f6f;
+	font-size: 14px;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+#tab-kutusu .tab{
+	float:left;
+	cursor:pointer;
+	background-color: #222 !important;
+	margin:0 4px 4px 0;
+	border-radius: 1px;
+    transition: all 0.6s ease 0s;
+    -moz-transition: all 0.6s ease 0s;
+    -webkit-transition: all 0.6s ease 0s;
+}
+
+#tab-kutusu .tab.kanal#tab-CS16{
+    padding-left: 30px;
+    background: url("../images/90.png") no-repeat 10px center;
+}
+
+#tab-kutusu .tab.kanal#tab-CSGO{
+    padding-left: 30px;
+    background: url("../images/740.png.gif") no-repeat 10px center;
+}
+
+#tab-kutusu .tab.kanal#tab-TS3{
+    padding-left: 30px;
+    background: url("../images/ts3.png") no-repeat 10px center;
+}
+
+#tab-kutusu .tab.kanal#tab-EAC{
+    padding-left: 30px;
+    background: url("../images/eac.png") no-repeat 10px center;
+}
+
+#tab-kutusu .tab.kanal a span.online{
+    color: #b6b6b6;
+}
+
+#tab-kutusu .tab a{
+    color: #aaa;
+	float: left;
+	margin:0;
+	padding:5px;
+    text-decoration: none;
+}
+
+#tab-kutusu .tab .x{
+	padding: 5px;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+#tab-kutusu .tab:hover,
+#tab-kutusu .tab.mavi{
+    color: #ddd;
+	background-color: #214358 !important;
+}
+
+#tab-kutusu .tab.mavi a,
+#tab-kutusu .tab.kirmizi a,
+#tab-kutusu .tab:hover a{
+    color: #ddd;
+}
+
+#tab-icerik-tasiyici {
+    scrollbar-width: thin;
+    scrollbar-color: grey transparent;
+}
+
+    #tab-icerik-tasiyici::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #tab-icerik-tasiyici::-webkit-scrollbar-thumb {
+        background-color: grey;
+    }
+
+#tab-kutusu .tab.kirmizi{
+    color:#fff;
+	background-color: #9f0029 !important;
+}
+
+#tab-icerik-tasiyici {
+    height: 60vh;
+    clear: both;
+    overflow-y: auto !important;
+}
+
+.tab-icerik .line a{
+    color: #aaa;
+    text-decoration: none;
+}
+
+.tab-icerik .line{
+    overflow:hidden;
+    background: #151515;
+    padding: 2px;
+    margin-bottom:5px;
+    font-size: 15px;
+    white-space:nowrap;
+    color: #9b5653;
+}
+
+.tab-icerik .line:hover{
+    background-color: rgba(255, 255, 255, 0.02)
+}
+
+
+.tab-icerik .avatar{
+    width: 24px;
+    height: 24px;
+    border: 1px solid #3b3b3b;
+}
+
+.tab-icerik .nick{
+    color: #e47272;
+    cursor:pointer;
+}
+
+.tab-icerik .mesaj{
+    float:left;
+    width: 90%;
+    color: #ccc;
+    overflow: hidden;
+}
+
+.tab-icerik .steam-profil{
+    opacity: 0.3;
+    margin-left: 10px;
+}
+
+.tab-icerik .steam-profil:hover{
+    opacity: 1;
+}
+
+.tab-icerik .saat{
+    padding: 5px 10px 5px 5px;
+    float: right;
+    color: #333;
+}
+
+#chat-kutusu{
+	margin-top:3px;
+	border-top: 1px solid #222;
+}
+
+#chat-kutusu #chat-input{
+	border:0;
+	padding-left: 40px;
+	margin-top:5px;
+	letter-spacing: 1px;
+	font-size:24px;
+	width: 100%;
+	height:35px;
+	background: transparent url("../images/mesaj.png") left center no-repeat;
+	color: #444;
+}
+
+#chat-kutusu input:focus {outline:none;}
+
+#chat-kutusu #chat-button{
+	margin: 5px 0 5px 5px;
+	cursor:pointer;
+	border:0;
+	width:87px;
+	height:25px;
+}
+
+#fanback{display:none;background:rgba(0,0,0,0.8);width:100%;height:100%;position:fixed;top:0;left:0;z-index:99999;}
+#fan-exit{width:100%;height:100%;}
+#fanbox{background:white;width:420px;height:270px;position:absolute;top:58%;left:60%;-webkit-box-shadow: inset 0 0 50px 0 #939393;-moz-box-shadow: inset 0 0 50px 0 #939393;box-shadow: inset 0 0 50px 0 #939393;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;margin: -210px 0 0 -375px;}
+#fanclose{float:right;cursor:pointer;background:url('../images/fanclose.png') repeat;height:15px;padding:20px;position:relative;padding-right:40px;margin-top:-20px;margin-right:-22px;}
+.remove-borda{height:1px;width:300px;margin:0 auto;background:#F3F3F3;margin-top:16px;position:relative;margin-left:20px;}

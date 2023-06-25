@@ -1,0 +1,562 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .chatTextarea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    textarea {
+        resize: none;
+        width: 80%;
+    }
+
+    .message-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    input[type="text"] {
+        width: 300px;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    button {
+        padding: 5px 10px;
+    }
+
+</style>
+
+
+
+
+<div class="container">
+
+    <div class="menu">
+        <ul class="list-unstyled list-inline text-uppercase" style="position: relative;">
+            <li class="turnuva" onclick="PopupGoster('#turnuva_div');">PreSearch Nedir?</li>
+            <li class="sss" onclick="PopupGoster('#sss_div');">Sıkça Sorular Sorular</li>
+            <li class="login pull-right">
+                <a target="_blank" href="https://discord.gg/EvMENPXR" style="    position: absolute;top: -5px;right: -10px;">
+                    <img src="images/login_dc.png" title="Discord'a giriş yap!" style="width: 200px;">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="turnuva_div" class="mfp-hide popup">
+        <h3>PreSearch Nedir?</h3>
+        <ul class="ul">
+
+            <li style="margin-top:30px;">
+                PreSearch insanların oyuncu, maç ve takım aramasına yardımcı olmak için kurulmuş bir organizasyondur. Bu platform sayesinde insanlar aynı takımda oynayacağı  oyuncuları seçebilecek ve daha keyifli oyunlar oynayabilecek.
+                <!-- <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7014150304151b304515455e1f0217">[PreSearch.Destek&#160;@@gmail]</a> üzerinden bizimle iletişime geçebilirsiniz!-->
+            </li>
+        </ul>
+    </div>
+
+    <div id="sss_div" class="mfp-hide popup">
+        <h3>Sıkça Sorulan Sorular</h3>
+        <ul class="ul">
+            <li class="ul_baslik">Siteden kullanıcıları neye göre uzaklaştırıyorsunuz?</li>
+            <li>
+                Kanalları doğru bir şekilde kullanmayan, hakaret, küfür, siyasi, ticari, reklam ve herhangi bir sebep
+                ile seviyeyi düşürecek içerikli mesaj gönderen veya ima eden kişileri sitemizden uzaklaştırıyoruz.
+            </li>
+            <li class="ul_baslik">Süreç Nasıl İşliyor?</li>
+            <li>
+                PreSearch üzerinde size verilen random sayı sizin geçici kimliğinizdir. Bu kimlikle beraber ortak konuşma kanalından size uygun mesajı yazan kişiyi bulabilir veya kendiniz isteğinizi belirtip iletişimlere geçebilirsiniz.  (Bkz: 1054:Takımımıza 1 kişi eksik Plat-Dia arası)
+            </li>
+            <li class="ul_baslik">Nasıl Reklam Verebilirim?</li>
+            <li>
+                PreSearch markanız için yaratıcı ve dijital reklam konusunda sizlere yardımcı olur! <a href="/cdn-cgi/l/email-protection"
+                                                                                                       class="__cf_email__" data-cfemail="7014150304151b304515455e1f0217">[PreSearch.Destek&#160;@@gmail]</a>
+                adresine mail göndererek veya sağ üst tarafda bulunan discord sunucumuzdaki yetkililerden destek alabilirsiniz.
+            </li>
+        </ul>
+    </div>
+
+    <div id="main">
+        <div id="tab-kutusu">
+            <div class="tab kanal title" id="tab-CS16" onclick="KanalGoster('CS16');">
+                <a href="cs16-eac-mac-bul-oyuncu-ara.html" title="Valorant oyuncu ve maç arama kanalı">
+                    PreSearch Oyuncu Bulma Platformu <span class="online small">(~)</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="tab-icerik-tasiyici">
+            <div id="tab-icerik-scroll">
+                <div id="tab-icerik-kutusu">
+                    <div class="tab-icerik" style="" id="tab-icerik-CS16">
+
+
+                       @* <div class="line">
+                            <div class="mesaj">
+                                <img class="img-circle avatar" src="images/90.png">
+                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1020</span>
+                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick" style="color:green">●</span>
+                                M1 Lazım.
+                            </div>
+                            <div class="saat small">23:30</div>
+                        </div>*@
+
+                       @* <div class="line">
+                            <div class="mesaj">
+                                <img class="img-circle avatar" src="images/90.png">
+                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1029</span>
+                                M1 Olurum.
+                            </div>
+                            <div class="saat small">23:30</div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chat-kutusu">
+            <input type='text' id='chat-input' placeholder="mesaj..." maxlength="110" />
+        </div>
+
+    </div>
+
+    <div class="pull-right small" id="online">
+        NICK: <span id="BilgiNick">~</span> ONLINE: <span id="BilgiOnlineSayisi">~</span> MESAJ: <span id="BilgimesajSayisi">~</span>
+    </div>
+
+    <div id="ticker">
+        <ul id="ticker-haber">
+
+            <li>
+                Sizde reklam vermek istiyorsanız <a href="">info@presearch</a>
+                adresine mail gönderebilirsiniz.
+            </li>
+            <li>
+                Discord sunucumuz üzerinden bize 7/24 şikayet/görüş ve önerilerinizi paylaşabilirsiniz.
+            </li>
+        </ul>
+    </div>
+</div>
+
+ 
+
+
+
+<script src="~/microsoft-signalr/signalr.min.js"></script>
+
+<script>
+    var cookieName = "myCookieId";
+    var cookieId = "", userId = "", activeSpecialChatRoom = "general",activeSpecialChatRoomId="";
+    var chatInput = document.getElementById("chat-input");
+    var hedefElement = document.querySelector(".tab-icerik");
+    var tabIcerikTasiyici = document.getElementById("tab-icerik-tasiyici");
+</script>
+
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .configureLogging(signalR.LogLevel.Information)
+        .withUrl("/ChatHub", {
+            transport: signalR.HttpTransportType.WebSockets,
+        })
+        .withAutomaticReconnect()
+        .build();
+
+    connection.start().then(function () {
+        console.log("Bağlantı ok.");
+    }).catch(function (err) {
+        console.error(err.toString());
+    });
+
+    connection.onclose(function (error) {
+        console.log("Bağlantı koptu.");
+    });
+
+    connection.onreconnecting(() => {
+        console.log("Yeniden bağlanmaya çalışılıyor.");
+    });
+
+    connection.onreconnected(() => {
+        console.log("Tekrar bağlanma başarılı.");
+    });
+
+    connection.on("CreateAndSendCookieId", () => {
+
+        if (document.cookie.indexOf(cookieName) === -1) {
+            // Çerez yok, yeni bir hash üret ve çereze ekle
+            var randomHash = generateRandomHash();
+            document.cookie = cookieName + "=" + randomHash;
+            cookieId = randomHash;
+        } else {
+            // Çerez zaten var, mevcut hash'i al
+            var existingHash = getCookie(cookieName);
+            cookieId = existingHash;
+        }
+
+
+        connection.invoke("ReceiveUserCookieId", cookieId)
+            .then(() => {
+                console.log("Cookie sended.");
+            })
+            .catch((error) => {
+                console.error("Cookie not sended! " + error);
+            });
+
+    });
+
+
+    connection.on("JoinGameChat", (serializedModel) => {
+
+        let mainpageDTO = JSON.parse(serializedModel);
+
+        userId = mainpageDTO.userProfile.UserId;
+
+
+        document.getElementById("BilgiOnlineSayisi").innerHTML = mainpageDTO.onlineUserCount;
+        document.getElementById("BilgiNick").innerHTML = userId;
+        document.getElementById("BilgimesajSayisi").innerHTML = mainpageDTO.generalMessages.length;
+
+
+        
+
+
+        // Veriyi döngü ile işleyin ve her bir kaydı hedef elemente ekleyin
+        mainpageDTO.generalMessages.forEach(function (kayit) {
+            // Yeni elementi oluşturun
+            var yeniElement = document.createElement("div");
+            yeniElement.className = "line";
+
+          
+
+            if (userId === parseInt(kayit.userId)) {
+                yeniElement.innerHTML = `
+                    <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+                                 <span class="nick" style="color:${kayit.userColor}">${kayit.userId}</span>
+                                 <span class="nick" style="color:green" >●</span>
+                        ${kayit.message}
+                    </div>
+                        <div class="saat small">${convertDateTime(kayit.datetime)}</div>
+                `;
+            }
+            else {
+
+                yeniElement.innerHTML = `
+                <div class="mesaj">
+                    <img class="img-circle avatar" src="images/90.png">
+                                 <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:${kayit.userColor}">${kayit.userId}</span>
+                                     <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
+                    ${kayit.message}
+                </div>
+                    <div class="saat small">${convertDateTime(kayit.datetime)}</div>
+            `;
+
+            }
+
+
+
+
+
+           
+
+            // Yeni elementi hedef elemente ekleyin
+            hedefElement.appendChild(yeniElement);
+        });
+
+
+
+        //chat scrollunu en aşağı indir.
+        tabIcerikTasiyici.scrollTop = tabIcerikTasiyici.scrollHeight;
+    });
+
+
+    chatInput.addEventListener("keyup", function (event) {
+
+        if (event.keyCode === 13) {
+
+            var yazilanMetin = chatInput.value;
+
+
+            if (activeSpecialChatRoom=="general") {
+
+                connection.invoke("SendGeneralMessage", yazilanMetin)
+                    .then(() => {
+                        console.log("Message general sended.");
+                        chatInput.value = "";
+                    })
+                    .catch((error) => {
+                        console.error("Message general not sended! " + error);
+                    });
+            
+            }
+            else
+            {
+                connection.invoke("SendSpecialMessage", yazilanMetin, parseInt(activeSpecialChatRoom))
+                    .then(() => {
+                        console.log("Message general sended.");
+                        chatInput.value = "";
+                    })
+                    .catch((error) => {
+                        console.error("Message general not sended! " + error);
+                    });
+            
+            
+            
+            }
+
+            
+        }
+
+    });
+
+    connection.on("ReceiveGeneralMessage", (serializedModel) => {
+
+       
+       
+
+        let generalMessageModel = JSON.parse(serializedModel);
+
+            // Yeni elementi oluşturun
+            var yeniElement = document.createElement("div");
+            yeniElement.className = "line";
+
+        if (userId === parseInt(generalMessageModel.userId)) {
+            yeniElement.innerHTML = `
+                    <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+
+                                        <span class="nick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
+                                <span class="nick" style="color:green">●</span>
+
+                                ${generalMessageModel.message}
+                    </div>
+                            <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
+                `;
+            }
+            else
+            {
+            yeniElement.innerHTML = `
+                    <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+
+                                            <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
+                                        <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
+
+                                ${generalMessageModel.message}
+                    </div>
+                            <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
+                `;
+            
+            }
+
+            
+
+            // Yeni elementi hedef elemente ekleyin
+            hedefElement.appendChild(yeniElement);
+
+
+        //chat scrollunu en aşağı indir.
+        tabIcerikTasiyici.scrollTop = tabIcerikTasiyici.scrollHeight;
+    });
+
+    connection.on("ReceiveSpecialMessage", (serializedModel) => {
+
+
+        let specialMessageModel = JSON.parse(serializedModel);
+       
+
+
+        // Yeni elementi oluşturun
+        var yeniElement = document.createElement("div");
+        yeniElement.className = "line";
+
+
+        if (cookieId === specialMessageModel.fromCookieId) {
+
+
+            yeniElement.innerHTML = `
+                        <div class="mesaj">
+                            <img class="img-circle avatar" src="images/90.png">
+
+                                    <span class="nick" style="color:${specialMessageModel.fromColor}">${userId}</span>
+                                    <span class="nick" style="color:green">●</span>
+
+                                            ${specialMessageModel.message}
+                        </div>
+                                    <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
+                    `;
+        }
+        else {
+            yeniElement.innerHTML = `
+                        <div class="mesaj">
+                            <img class="img-circle avatar" src="images/90.png">
+
+                                                                <span class="nick" style="color:${specialMessageModel.fromColor}">${specialMessageModel.fromUserId}</span>
+                                            <span class="nick" style="color:green">●</span>
+
+                                        ${specialMessageModel.message}
+                        </div>
+                                    <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
+                    `;
+
+        }
+
+        var tabicerikSpecial = $('#tab-icerik-' + activeSpecialChatRoomId);
+
+        if (tabicerikSpecial.length>0) {
+            tabicerikSpecial.append(yeniElement);
+        }
+        else
+        {
+            activeSpecialChatRoomId = specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId;
+
+            TabYeni(specialMessageModel.fromUserId, specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId)
+
+
+            tabicerikSpecial = $('#tab-icerik-' + activeSpecialChatRoomId);
+
+            $("#tab-icerik-CS16").css('display', 'block');
+            $('#tab-kutusu div').addClass('mavi');
+
+            tabicerikSpecial.css('display', 'none');
+            $('#tab-kutusu #tab-' + specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId).removeClass('mavi');
+           
+
+            tabicerikSpecial.append(yeniElement);
+        }
+
+        //chat scrollunu en aşağı indir.
+        tabIcerikTasiyici.scrollTop = tabIcerikTasiyici.scrollHeight;
+    });
+
+
+    
+
+    //----------------------------------------------------
+    function TabYeni(el, id) {
+
+        activeSpecialChatRoom = el;
+        activeSpecialChatRoomId = id;
+
+        AliciID = id;
+
+        if ($('#tab-icerik-' + id).length) {
+            TabGoster(id);
+            return;
+        }
+
+        $('#tab-kutusu div').removeClass('mavi');
+        $('#tab-kutusu').append('<div class="tab mavi" id="tab-' + id + '"><a href="javascript:TabGoster(\'' + id + '\')">' + el + '</a><span class="x glyphicon glyphicon-remove" onclick="TabKapat(\'' + id + '\');"></span></div>');
+        $('.tab-icerik').hide();
+        $('#tab-icerik-kutusu').append('<div class="tab-icerik" id="tab-icerik-' + id + '"></div>');
+        $('#chat-input').focus();
+    }
+
+    //----------------------------------------------------
+
+
+
+
+
+
+
+    connection.on("InhanceOnlineUser", (serializedModel) => {
+
+        // 1. Elementin içeriğini alın
+        var spanElement = document.getElementById("BilgiOnlineSayisi");
+        var currentValue = parseInt(spanElement.innerHTML); // Mevcut değeri tam sayıya dönüştürün
+
+        // 2. Değeri artırın
+        var incrementedValue = currentValue + 1;
+
+        // 3. Güncellenmiş değeri tekrar elementin içine yerleştirin
+        spanElement.innerHTML = incrementedValue.toString();
+
+    });
+
+    connection.on("ReduceOnlineUser", (serializedModel) => {
+
+        // 1. Elementin içeriğini alın
+        var spanElement = document.getElementById("BilgiOnlineSayisi");
+        var currentValue = parseInt(spanElement.innerHTML); // Mevcut değeri tam sayıya dönüştürün
+
+        // 2. Değeri azaltın
+        var decrementedValue = currentValue - 1;
+
+        // 3. Güncellenmiş değeri tekrar elementin içine yerleştirin
+        spanElement.innerHTML = decrementedValue.toString();
+
+    });
+
+    
+
+
+
+</script>
+
+
+@*Helpers scripts*@
+
+<script>
+    function generateRandomHash() {
+        var length = 20;
+        var characters =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var hash = "";
+
+        for (var i = 0; i < length; i++) {
+            hash += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+        return hash;
+    }
+
+    function getCookie(cookieName) {
+        var name = cookieName + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var cookieArray = decodedCookie.split(";");
+
+        for (var i = 0; i < cookieArray.length; i++) {
+            var cookie = cookieArray[i];
+            while (cookie.charAt(0) === " ") {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name) === 0) {
+                return cookie.substring(name.length, cookie.length);
+            }
+        }
+
+        return "";
+    }
+
+    function convertDateTime(datetimenow)
+    {
+        var gelenTarih = datetimenow;
+
+        // Tarih nesnesini oluşturun
+        var tarih = new Date(gelenTarih);
+
+        // Yıl, ay ve gün bilgilerini alın
+        var yil = tarih.getFullYear();
+        var ay = tarih.getMonth() + 1; // JavaScript ay indeksi 0'dan başlar, bu yüzden +1 ekliyoruz
+        var gun = tarih.getDate();
+
+        // Saat ve dakika bilgilerini alın
+        var saat = tarih.getHours();
+        var dakika = tarih.getMinutes();
+
+        // İstediğiniz formatı oluşturun
+        var formatliTarih = gun + "-" + (ay < 10 ? "0" + ay : ay) + "-" + yil + " " + (saat < 10 ? "0" + saat : saat) + ":" + (dakika < 10 ? "0" + dakika : dakika);
+
+        return formatliTarih;
+
+    }
+
+</script>
