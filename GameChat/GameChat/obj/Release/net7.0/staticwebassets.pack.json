@@ -377,6 +377,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\wwwroot\\media\\specialMessageSound.mp3",
+      "PackagePath": "staticwebassets\\media\\specialMessageSound.mp3"
+    },
+    {
       "Id": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\wwwroot\\microsoft-signalr\\signalr.js",
       "PackagePath": "staticwebassets\\microsoft-signalr\\signalr.js"
     },

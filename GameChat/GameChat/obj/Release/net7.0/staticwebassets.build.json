@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bczpOJvnlQ+fXMIXIgpmsjJ/mUKy9kpk4Lu3qnusVvM=",
+  "Hash": "d9/Qt123Artgh7OR/K9k0fdSgk1dlp10pvrEQHiO+HA=",
   "Source": "GameChat",
   "BasePath": "_content/GameChat",
   "Mode": "Default",
@@ -1630,6 +1630,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\wwwroot\\media\\specialMessageSound.mp3",
+      "SourceId": "GameChat",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\wwwroot\\",
+      "BasePath": "_content/GameChat",
+      "RelativePath": "media/specialMessageSound.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\media\\specialMessageSound.mp3"
     },
     {
       "Identity": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\wwwroot\\microsoft-signalr\\signalr.js",

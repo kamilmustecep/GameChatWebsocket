@@ -98,7 +98,10 @@ namespace GameChat.Hub
         public override async Task OnDisconnectedAsync(Exception exception)
         {
             var user = UserHandler.GetUserConnectionId(Context.ConnectionId);
-            user.isOnline= false;
+            if (user != null)
+            {
+                user.isOnline = false;
+            }
 
             Clients.AllExcept(Context.ConnectionId).SendAsync("ReduceOnlineUser");
 

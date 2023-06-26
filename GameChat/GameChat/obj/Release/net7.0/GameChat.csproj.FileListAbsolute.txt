@@ -33,6 +33,7 @@ C:\Users\Asus\source\repos\GameChat\GameChat\obj\Release\net7.0\refint\GameChat.
 C:\Users\Asus\source\repos\GameChat\GameChat\obj\Release\net7.0\GameChat.pdb
 C:\Users\Asus\source\repos\GameChat\GameChat\obj\Release\net7.0\GameChat.genruntimeconfig.cache
 C:\Users\Asus\source\repos\GameChat\GameChat\obj\Release\net7.0\ref\GameChat.dll
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\GameChat.csproj.AssemblyReference.cache
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\appsettings.Development.json
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\appsettings.json
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\libman.json
@@ -44,7 +45,6 @@ C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Releas
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\GameChat.pdb
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\Newtonsoft.Json.dll
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\bin\Release\net7.0\System.Net.WebSockets.WebSocketProtocol.dll
-C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\GameChat.csproj.AssemblyReference.cache
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\GameChat.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\GameChat.AssemblyInfoInputs.cache
 C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\GameChat.AssemblyInfo.cs

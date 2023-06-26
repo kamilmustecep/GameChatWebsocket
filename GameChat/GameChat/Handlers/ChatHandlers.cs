@@ -6,10 +6,19 @@ namespace GameChat.Handlers
     public class ChatHandlers
     {
         private static readonly List<GeneralMessage> _generalMessages = new List<GeneralMessage>();
+        private const int _generalMaxMessages = 100;
+
         private static readonly List<SpecialChatRoom> _specialChatRooms = new List<SpecialChatRoom>();
+        private const int _specialMaxMessages = 20;
+
 
         public static GeneralMessage AddGeneralMessage(string userId, string message,string color)
         {
+            if (_generalMessages.Count >= _generalMaxMessages)
+            {
+                _generalMessages.RemoveAt(0);
+            }
+
             GeneralMessage generalMessage = new GeneralMessage();
             generalMessage.userId = userId;
             generalMessage.userColor = color;
@@ -46,6 +55,11 @@ namespace GameChat.Handlers
             {
                 if (chatRoom.roomMessages!=null)
                 {
+                    if (chatRoom.roomMessages.Count >= _specialMaxMessages)
+                    {
+                        chatRoom.roomMessages.RemoveAt(0);
+                    }
+
                     chatRoom.roomMessages.Add(specialMessage);
                 }
                 else
