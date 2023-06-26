@@ -1,0 +1,10 @@
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\GameChat.exe
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\appsettings.json
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\libman.json
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\GameChat.dll
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\GameChat.deps.json
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\GameChat.runtimeconfig.json
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\GameChat.pdb
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\kamil.mustecep\Documents\GameChatWebsocket\GameChat\GameChat\obj\Release\net7.0\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll

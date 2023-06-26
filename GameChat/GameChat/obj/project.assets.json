@@ -2038,19 +2038,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\kamil.mustecep\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\source\\repos\\GameChat\\GameChat\\GameChat.csproj",
+      "projectUniqueName": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\GameChat.csproj",
       "projectName": "GameChat",
-      "projectPath": "C:\\Users\\Asus\\source\\repos\\GameChat\\GameChat\\GameChat.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\source\\repos\\GameChat\\GameChat\\obj\\",
+      "projectPath": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\GameChat.csproj",
+      "packagesPath": "C:\\Users\\kamil.mustecep\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kamil.mustecep\\Documents\\GameChatWebsocket\\GameChat\\GameChat\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kamil.mustecep\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2100,7 +2100,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

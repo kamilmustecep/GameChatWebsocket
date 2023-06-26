@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Asus\Desktop\gamechat</_PublishTargetUrl>
-    <History>True|2023-06-25T19:26:45.9675725Z;</History>
+    <History>False|2023-06-26T06:22:07.8998980Z;True|2023-06-25T22:26:45.9675725+03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

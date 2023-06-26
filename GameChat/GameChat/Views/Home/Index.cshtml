@@ -99,23 +99,23 @@
                     <div class="tab-icerik" style="" id="tab-icerik-CS16">
 
 
-                       @* <div class="line">
-                            <div class="mesaj">
-                                <img class="img-circle avatar" src="images/90.png">
-                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1020</span>
-                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick" style="color:green">●</span>
-                                M1 Lazım.
-                            </div>
-                            <div class="saat small">23:30</div>
+                        @* <div class="line">
+                        <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+                        <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1020</span>
+                        <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick" style="color:green">●</span>
+                        M1 Lazım.
+                        </div>
+                        <div class="saat small">23:30</div>
                         </div>*@
 
-                       @* <div class="line">
-                            <div class="mesaj">
-                                <img class="img-circle avatar" src="images/90.png">
-                                <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1029</span>
-                                M1 Olurum.
-                            </div>
-                            <div class="saat small">23:30</div>
+                        @* <div class="line">
+                        <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+                        <span onclick="TabYeni(this, '6c4449fe697f81ecb1053e4ca02be5bd24d20e5d');" class="nick">1029</span>
+                        M1 Olurum.
+                        </div>
+                        <div class="saat small">23:30</div>
                         </div>*@
                     </div>
                 </div>
@@ -146,7 +146,7 @@
     </div>
 </div>
 
- 
+
 
 
 
@@ -154,7 +154,7 @@
 
 <script>
     var cookieName = "myCookieId";
-    var cookieId = "", userId = "", activeSpecialChatRoom = "general",activeSpecialChatRoomId="";
+    var cookieId = "", userId = "", activeSpecialChatUserId = "", activeSpecialChatRoomId = "CS16";
     var chatInput = document.getElementById("chat-input");
     var hedefElement = document.querySelector(".tab-icerik");
     var tabIcerikTasiyici = document.getElementById("tab-icerik-tasiyici");
@@ -224,7 +224,7 @@
         document.getElementById("BilgimesajSayisi").innerHTML = mainpageDTO.generalMessages.length;
 
 
-        
+
 
 
         // Veriyi döngü ile işleyin ve her bir kaydı hedef elemente ekleyin
@@ -233,30 +233,30 @@
             var yeniElement = document.createElement("div");
             yeniElement.className = "line";
 
-          
+
 
             if (userId === parseInt(kayit.userId)) {
                 yeniElement.innerHTML = `
-                    <div class="mesaj">
-                        <img class="img-circle avatar" src="images/90.png">
-                                 <span class="nick" style="color:${kayit.userColor}">${kayit.userId}</span>
-                                 <span class="nick" style="color:green" >●</span>
-                        ${kayit.message}
-                    </div>
-                        <div class="saat small">${convertDateTime(kayit.datetime)}</div>
-                `;
+                        <div class="mesaj">
+                            <img class="img-circle avatar" src="images/90.png">
+                                     <span class="nick" style="color:${kayit.userColor}">${kayit.userId}</span>
+                                     <span class="nick" style="color:green" >●</span>
+                            ${kayit.message}
+                        </div>
+                            <div class="saat small">${convertDateTime(kayit.datetime)}</div>
+                    `;
             }
             else {
 
                 yeniElement.innerHTML = `
-                <div class="mesaj">
-                    <img class="img-circle avatar" src="images/90.png">
-                                 <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:${kayit.userColor}">${kayit.userId}</span>
-                                     <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
-                    ${kayit.message}
-                </div>
-                    <div class="saat small">${convertDateTime(kayit.datetime)}</div>
-            `;
+                    <div class="mesaj">
+                        <img class="img-circle avatar" src="images/90.png">
+                                     <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:${kayit.userColor}">${kayit.userId}</span>
+                                         <span onclick="TabYeni(${kayit.userId}, '${userId}-${kayit.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
+                        ${kayit.message}
+                    </div>
+                        <div class="saat small">${convertDateTime(kayit.datetime)}</div>
+                `;
 
             }
 
@@ -264,7 +264,7 @@
 
 
 
-           
+
 
             // Yeni elementi hedef elemente ekleyin
             hedefElement.appendChild(yeniElement);
@@ -284,7 +284,7 @@
             var yazilanMetin = chatInput.value;
 
 
-            if (activeSpecialChatRoom=="general") {
+            if (activeSpecialChatRoomId == "CS16") {
 
                 connection.invoke("SendGeneralMessage", yazilanMetin)
                     .then(() => {
@@ -294,11 +294,10 @@
                     .catch((error) => {
                         console.error("Message general not sended! " + error);
                     });
-            
+
             }
-            else
-            {
-                connection.invoke("SendSpecialMessage", yazilanMetin, parseInt(activeSpecialChatRoom))
+            else {
+                connection.invoke("SendSpecialMessage", yazilanMetin, parseInt(activeSpecialChatUserId))
                     .then(() => {
                         console.log("Message general sended.");
                         chatInput.value = "";
@@ -306,60 +305,59 @@
                     .catch((error) => {
                         console.error("Message general not sended! " + error);
                     });
-            
-            
-            
+
+
+
             }
 
-            
+
         }
 
     });
 
     connection.on("ReceiveGeneralMessage", (serializedModel) => {
 
-       
-       
+
+
 
         let generalMessageModel = JSON.parse(serializedModel);
 
-            // Yeni elementi oluşturun
-            var yeniElement = document.createElement("div");
-            yeniElement.className = "line";
+        // Yeni elementi oluşturun
+        var yeniElement = document.createElement("div");
+        yeniElement.className = "line";
 
         if (userId === parseInt(generalMessageModel.userId)) {
             yeniElement.innerHTML = `
-                    <div class="mesaj">
-                        <img class="img-circle avatar" src="images/90.png">
+                        <div class="mesaj">
+                            <img class="img-circle avatar" src="images/90.png">
 
-                                        <span class="nick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
-                                <span class="nick" style="color:green">●</span>
+                                            <span class="nick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
+                                    <span class="nick" style="color:green">●</span>
 
-                                ${generalMessageModel.message}
-                    </div>
-                            <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
-                `;
-            }
-            else
-            {
+                                    ${generalMessageModel.message}
+                        </div>
+                                <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
+                    `;
+        }
+        else {
             yeniElement.innerHTML = `
-                    <div class="mesaj">
-                        <img class="img-circle avatar" src="images/90.png">
+                        <div class="mesaj">
+                            <img class="img-circle avatar" src="images/90.png">
 
-                                            <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
-                                        <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
+                                                <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:${generalMessageModel.userColor}">${generalMessageModel.userId}</span>
+                                            <span onclick="TabYeni(${generalMessageModel.userId}, '${userId}-${generalMessageModel.userId}');" class="nick otherPeopleNick" style="color:green">●</span>
 
-                                ${generalMessageModel.message}
-                    </div>
-                            <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
-                `;
-            
-            }
+                                    ${generalMessageModel.message}
+                        </div>
+                                <div class="saat small">${convertDateTime(generalMessageModel.datetime)}</div>
+                    `;
 
-            
+        }
 
-            // Yeni elementi hedef elemente ekleyin
-            hedefElement.appendChild(yeniElement);
+
+
+        // Yeni elementi hedef elemente ekleyin
+        hedefElement.appendChild(yeniElement);
 
 
         //chat scrollunu en aşağı indir.
@@ -370,66 +368,76 @@
 
 
         let specialMessageModel = JSON.parse(serializedModel);
-       
+
 
 
         // Yeni elementi oluşturun
         var yeniElement = document.createElement("div");
         yeniElement.className = "line";
 
+        if (activeSpecialChatRoomId != specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId && activeSpecialChatRoomId != specialMessageModel.toUserId + '-' + specialMessageModel.fromUserId) {
+            yeniElement.style.display = "none";
+        }
+
 
         if (cookieId === specialMessageModel.fromCookieId) {
 
 
             yeniElement.innerHTML = `
-                        <div class="mesaj">
-                            <img class="img-circle avatar" src="images/90.png">
+                            <div class="mesaj">
+                                <img class="img-circle avatar" src="images/90.png">
 
-                                    <span class="nick" style="color:${specialMessageModel.fromColor}">${userId}</span>
-                                    <span class="nick" style="color:green">●</span>
+                                        <span class="nick" style="color:${specialMessageModel.fromColor}">${userId}</span>
+                                        <span class="nick" style="color:green">●</span>
 
-                                            ${specialMessageModel.message}
-                        </div>
-                                    <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
-                    `;
+                                                ${specialMessageModel.message}
+                            </div>
+                                        <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
+                        `;
         }
         else {
             yeniElement.innerHTML = `
-                        <div class="mesaj">
-                            <img class="img-circle avatar" src="images/90.png">
+                            <div class="mesaj">
+                                <img class="img-circle avatar" src="images/90.png">
 
-                                                                <span class="nick" style="color:${specialMessageModel.fromColor}">${specialMessageModel.fromUserId}</span>
-                                            <span class="nick" style="color:green">●</span>
+                                                                    <span class="nick" style="color:${specialMessageModel.fromColor}">${specialMessageModel.fromUserId}</span>
+                                                <span class="nick" style="color:green">●</span>
 
-                                        ${specialMessageModel.message}
-                        </div>
-                                    <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
-                    `;
+                                            ${specialMessageModel.message}
+                            </div>
+                                        <div class="saat small">${convertDateTime(specialMessageModel.datetime)}</div>
+                        `;
 
         }
 
-        var tabicerikSpecial = $('#tab-icerik-' + activeSpecialChatRoomId);
+        var tabicerikSpecial1 = $('#tab-icerik-' + specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId);
+        var tabicerikSpecial2 = $('#tab-icerik-' + specialMessageModel.toUserId + '-' + specialMessageModel.fromUserId);
 
-        if (tabicerikSpecial.length>0) {
-            tabicerikSpecial.append(yeniElement);
+        if (tabicerikSpecial1.length > 0 || tabicerikSpecial2.length > 0) {
+
+            if (tabicerikSpecial1.length > 0) {
+                tabicerikSpecial1.append(yeniElement);
+            }
+            else {
+                tabicerikSpecial2.append(yeniElement);
+            }
         }
-        else
-        {
-            activeSpecialChatRoomId = specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId;
-
-            TabYeni(specialMessageModel.fromUserId, specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId)
+        else {
 
 
-            tabicerikSpecial = $('#tab-icerik-' + activeSpecialChatRoomId);
+            TabYeniMesaj(specialMessageModel.fromUserId, specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId)
 
-            $("#tab-icerik-CS16").css('display', 'block');
-            $('#tab-kutusu div').addClass('mavi');
+            tabicerikSpecial2 = $('#tab-icerik-' + specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId);
 
-            tabicerikSpecial.css('display', 'none');
-            $('#tab-kutusu #tab-' + specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId).removeClass('mavi');
-           
+            //$("#tab-icerik-CS16").css('display', 'block');
+            //$('#tab-kutusu div').addClass('mavi');
 
-            tabicerikSpecial.append(yeniElement);
+            //tabicerikSpecial.css('display', 'none');
+            //$('#tab-kutusu #tab-' + specialMessageModel.fromUserId + '-' + specialMessageModel.toUserId).removeClass('mavi');
+
+
+
+            tabicerikSpecial2.append(yeniElement);
         }
 
         //chat scrollunu en aşağı indir.
@@ -437,13 +445,14 @@
     });
 
 
-    
+
 
     //----------------------------------------------------
     function TabYeni(el, id) {
 
-        activeSpecialChatRoom = el;
+        activeSpecialChatUserId = el;
         activeSpecialChatRoomId = id;
+
 
         AliciID = id;
 
@@ -458,6 +467,19 @@
         $('#tab-icerik-kutusu').append('<div class="tab-icerik" id="tab-icerik-' + id + '"></div>');
         $('#chat-input').focus();
     }
+
+    function TabYeniMesaj(el, id) {
+
+        //activeSpecialChatUserId = el;
+        //activeSpecialChatRoomId = id;
+
+        AliciID = id;
+
+        $('#tab-kutusu').append('<div class="tab" id="tab-' + id + '"><a href="javascript:TabGoster(\'' + id + '\')">' + el + '</a><span class="x glyphicon glyphicon-remove" onclick="TabKapat(\'' + id + '\');"></span></div>');
+        $('#tab-icerik-kutusu').append('<div class="tab-icerik" id="tab-icerik-' + id + '"></div>');
+        $('#chat-input').focus();
+    }
+
 
     //----------------------------------------------------
 
@@ -495,7 +517,7 @@
 
     });
 
-    
+
 
 
 
@@ -536,8 +558,7 @@
         return "";
     }
 
-    function convertDateTime(datetimenow)
-    {
+    function convertDateTime(datetimenow) {
         var gelenTarih = datetimenow;
 
         // Tarih nesnesini oluşturun

@@ -22,11 +22,11 @@
     @RenderBody()
 
 
-   
+
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>*@
-   @* @await RenderSectionAsync("Scripts", required: false)*@
+    @* @await RenderSectionAsync("Scripts", required: false)*@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.min.js"></script>
     <script type="text/javascript" src="~/js/popup.js"></script>
@@ -60,11 +60,11 @@
         //----------------------------------------------------
         function KanalGoster(id) {
 
-            Socket.send(JSON.stringify({
-                "Baslik": Baslik,
-                "Event": "KanalKayit",
-                "Veri": { "Steam": Steam, "KanalID": id }
-            }));
+            //Socket.send(JSON.stringify({
+            //    "Baslik": Baslik,
+            //    "Event": "KanalKayit",
+            //    "Veri": { "Steam": Steam, "KanalID": id }
+            //}));
 
             TabGoster(id);
 
@@ -74,10 +74,35 @@
         function TabGoster(id) {
             AliciID = id;
 
+            var filtered = id;
+
+            tabIcerikTasiyici = document.getElementById("tab-icerik-tasiyici");
+
+            if (id.indexOf("-") === -1) {
+
+            } else {
+                var splitted = id.split("-");
+                filtered = splitted.filter(function (part) {
+                    return part !== userId.toString();
+                });
+            }
+
+            activeSpecialChatUserId = filtered;
+            activeSpecialChatRoomId = id;
+
             $('.tab-icerik').hide();
             $('#tab-kutusu div').removeClass('mavi');
             $('#tab-icerik-' + AliciID).fadeIn();
             $('#tab-' + AliciID).removeClass('kirmizi').addClass('mavi');
+
+
+            var divContainer = document.getElementById("tab-icerik-" + activeSpecialChatRoomId); // ID'yi buraya yerleştirin
+            var lineDivs = divContainer.getElementsByClassName("line");
+
+            for (var i = 0; i < lineDivs.length; i++) {
+                lineDivs[i].style.display = "block";
+            }
+
 
             $log = $("#tab-icerik-scroll");
             $log.slimScroll({ scrollTo: $log[0].scrollHeight });
@@ -88,17 +113,20 @@
         //----------------------------------------------------
         function TabKapat(AliciID) {
 
-            activeSpecialChatRoom="general";
+            activeSpecialChatRoomId = "CS16";
 
             $('#tab-' + AliciID).remove();
+
             $('#tab-icerik-' + AliciID).remove();
 
-            if ($('#tab-kutusu .tab').last().hasClass("kanal")) {
-                TabGoster(KanalID);
+            TabGoster(KanalID);
 
-            } else {
-                $('#tab-kutusu .tab a').last().click();
-            }
+            //if ($('#tab-kutusu .tab').last().hasClass("kanal")) {
+
+
+            //} else {
+            //    $('#tab-kutusu .tab a').last().click();
+            //}
 
         }
 
@@ -122,13 +150,13 @@
         //}
 
         ////----------------------------------------------------
-        function MesajGonder(Mesaj) {
-            Socket.send(JSON.stringify({
-                "Baslik": Baslik,
-                "Event": "Mesaj",
-                "Veri": { "AliciID": AliciID, "Mesaj": Mesaj, "Steam": Steam }
-            }));
-        }
+        //function MesajGonder(Mesaj) {
+        //    Socket.send(JSON.stringify({
+        //        "Baslik": Baslik,
+        //        "Event": "Mesaj",
+        //        "Veri": { "AliciID": AliciID, "Mesaj": Mesaj, "Steam": Steam }
+        //    }));
+        //}
 
         //----------------------------------------------------
         function SocketAc() {
@@ -219,12 +247,12 @@
             $("#tab-" + KanalID).addClass("mavi");
             $("#tab-icerik-" + KanalID).fadeIn("slow");
 
-            $('#chat-input').keypress(function (e) {
-                if (e.keyCode == 13 && this.value) {
-                    MesajGonder($(this).val());
-                    $(this).val('');
-                }
-            });
+            //$('#chat-input').keypress(function (e) {
+            //    if (e.keyCode == 13 && this.value) {
+            //        //MesajGonder($(this).val());
+            //        $(this).val('');
+            //    }
+            //});
 
             $(".kanal").on("click", "a", function (event) {
                 event.preventDefault();

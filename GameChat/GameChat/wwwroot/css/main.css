@@ -287,7 +287,8 @@ body{
 #tab-icerik-tasiyici {
     height: 60vh;
     clear: both;
-    overflow-y: auto !important;
+    overflow:hidden;
+   /* overflow-y: auto !important;*/
 }
 
 .tab-icerik .line a{
